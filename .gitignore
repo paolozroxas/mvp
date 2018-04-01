@@ -1,5 +1,7 @@
 ### node etc ###
 
+# data
+words_dataset.csv
 # Logs
 logs
 *.log

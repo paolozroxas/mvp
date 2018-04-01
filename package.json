@@ -1,0 +1,25 @@
+{
+  "name": "stockfeels",
+  "version": "1.0.0",
+  "description": "Calculates Twitter sentiment score for stocks",
+  "main": "server/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leetster0/hrsf90-mvp.git"
+  },
+  "author": "Paolo Z. Roxas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leetster0/hrsf90-mvp/issues"
+  },
+  "homepage": "https://github.com/leetster0/hrsf90-mvp#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "request": "^2.85.0",
+    "request-promise": "^4.2.2",
+    "underscore": "^1.8.3"
+  }
+}
