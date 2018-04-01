@@ -1,5 +1,8 @@
 ### node etc ###
 
+# api keys
+twitter.config.js
+
 # data
 words_dataset.csv
 # Logs

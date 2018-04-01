@@ -1,15 +1,13 @@
 const axios = require('axios');
 const _ = require('underscore');
-//base64 encoded key: 'M3o4TFJQdHBMM3hsbHQ3YVZzcHFzdW1ZQzpWMnJDQWVDaGRJM3FXazBIbGN2eDREVUFuRWhRUENlUDFPOXZ0MkhuSEpJTkJOVHkwYg=='
-//consumer key:     '3z8LRPtpL3xllt7aVspqsumYC'
-//secret key: 'V2rCAeChdI3qWk0Hlcvx4DUAnEhQPCeP1O9vt2HnHJINBNTy0b'
+const apiKeys = require('../twitter.config.js');
 
 module.exports.getTweetsByKeyword = (keyword) => {
   return axios({
     method: 'post',
     url: 'https://api.twitter.com/oauth2/token',
     headers: {
-      'Authorization': 'Basic M3o4TFJQdHBMM3hsbHQ3YVZzcHFzdW1ZQzpWMnJDQWVDaGRJM3FXazBIbGN2eDREVUFuRWhRUENlUDFPOXZ0MkhuSEpJTkJOVHkwYg==',
+      'Authorization': 'Basic ' + apiKeys.base64Key,
       'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
     },
     data: 'grant_type=client_credentials'
@@ -60,6 +58,6 @@ module.exports.getTweetsByKeyword = (keyword) => {
     return output;
   })
   .catch(err => console.error(err));
-  
+
 }
 
