@@ -1,0 +1,132 @@
+body {
+  font-size: 12px;
+  font-family: 'verdana', 'sans-serif';
+}
+.flexbox-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.flexbox-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-weight: bold;
+  text-align: center;
+  padding: 20px;
+}
+.app-name {
+  font-size: 30px;
+  padding: 10px;
+}
+.app-author {
+  font-size: 16px;
+  padding: 10px;
+}
+
+.search {
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+.exchange {
+  font-size: 18px;
+  color: darkgrey;
+  justify-content: flex-end;
+}
+.ticker {
+  font-size: 30px;
+  font-weight: bold;
+  justify-content: flex-end;
+  padding-left: 10px;
+}
+.company-name {
+  font-size: 18px;
+  color: darkgrey;
+  justify-content: flex-end;
+  padding-left: 20px;
+}
+.search-bar {
+padding-left: 20px;
+align-self: flex-end;
+}
+.search-button {
+  margin-left: 10px;
+  padding: 2px;
+  border: solid lightgrey;
+  border-radius: 5px;
+  border-width: 2px;
+  background-color: lightgrey;
+  font-weight: bold;
+}
+.search-button:hover {
+  border: solid black;
+  border-width: 2px;
+  cursor: pointer;
+}
+
+.main {
+  align-items: flex-start;
+  align-content: stretch;
+  padding: 20px;
+}
+
+.stock {
+  justify-content: flex-start;
+}
+.stock-price-value {
+  font-size: 40px;
+}
+.stock-price-currency {
+  font-size: 18px;
+  color: darkgrey;
+  padding-left: 20px;
+}
+.stock-price-change {
+  font-size: 18px;
+  justify-content: flex-start;
+}
+.stock-price-change-percent {
+  padding-left: 20px;
+}
+.stock-info-list {
+  font-size: 16px;
+  padding-top: 10px;
+}
+.stock-info-list-element {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 200px;
+  padding: 5px;
+}
+
+.sentiment {
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 20px;
+}
+.scores {
+  text-align: center;
+}
+.score-value {
+  font-size: 40px;
+}
+.score-label {
+  font-size: 16px;
+  color: darkgrey;
+}
+
+.tweets {
+  padding-top: 10px;
+}
+.tweet-screen-name {
+  font-weight: bold;
+}
+.tweet {
+}
