@@ -1,39 +1,40 @@
-module.exports.getSentimentScore = (snippet, dict) => {
-  var positiveScore = 0;
-  var negativeScore = 0;
-  var words = snippet.replace(/[^a-zA-Z\d\s]/g, '').split(' ');
-  var uniqueWords = {};
-  var uniqueWordsCount = 0;
-
-  //get unique words
-  for (var i = 0; i < words.length; i++) {
-    if (!uniqueWords.hasOwnProperty(words[i])) {
-      uniqueWords[words[i]] = true;
-      uniqueWordsCount++;
-    }
-  }
+module.exports.getSentimentScore = (tweet, dict) => {
+  var positiveWordCount = 0;
+  var negativeWordCount = 0;
+  var words = tweet.text.replace( /\n/g, " " ).replace(/[^a-zA-Z\d\s]/g, '').split(' ');
 
   //check if word in sentiment dictionary
-  for(var word in uniqueWords) {
-    word = word.toUpperCase();
+  for(var i = 0; i < words.length; i++) {
+    var word = words[i].toUpperCase();
     if (dict.hasOwnProperty(word)) {
       if (dict[word]) {
-        positiveScore++;
+        positiveWordCount++;
       } else {
-        negativeScore++;
+        negativeWordCount++;
       }
     }
   }
 
-  //get scores as percentage of unique words
-  positiveScore *= 100;
-  negativeScore *= 100;
-  positiveScore /= uniqueWordsCount;
-  negativeScore /= uniqueWordsCount;
+  //get scores as percentage words
+  var positiveScore = 100 * positiveWordCount / words.length;
+  var negativeScore = 100 * negativeWordCount / words.length;
+  var netScore = positiveScore - negativeScore;
+
+  //weigh scores by sum of favorite and retweet counts
+  var positiveInfluence = positiveScore * (1 + tweet.favoriteCount + tweet.retweetCount);
+  var negativeInfluence = negativeScore * (1 + tweet.favoriteCount + tweet.retweetCount);
+  var netInfluence = netScore * (1 + tweet.favoriteCount + tweet.retweetCount);
 
   return {
-    positive: positiveScore,
-    negative: negativeScore,
-    net: positiveScore - negativeScore
+    content: {
+      positive: positiveScore,
+      negative: negativeScore,
+      net: netScore
+    },
+    influence: {
+      positive: positiveInfluence,
+      negative: negativeInfluence,
+      net: netInfluence
+    }
   };
 }

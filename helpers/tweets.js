@@ -23,7 +23,7 @@ module.exports.getTweetsByKeyword = (keyword) => {
         q: keyword,
         count: 100,
         tweet_mode: 'extended',
-        result_type: 'popular'
+        result_type: 'mixed'
       },
       headers: {
         'Authorization': 'Bearer ' + token
@@ -56,4 +56,3 @@ module.exports.getTweetsByKeyword = (keyword) => {
   .catch(err => console.error(err));
 
 };
-

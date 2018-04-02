@@ -1,7 +1,10 @@
 ### node etc ###
 
+# webpack
+bundle.js
+
 # api keys
-twitter.config.js
+config.js
 
 # data
 words_dataset.csv
