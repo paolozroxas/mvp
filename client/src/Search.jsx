@@ -10,13 +10,13 @@ class Search extends React.Component {
 
   render() {
     return (
-      <div className="search">
-        <div className="exchange">{this.props.exchange}:</div>
-        <div className="ticker">{this.props.ticker}</div>
-        <div className="company-name">{this.props.name}</div>
-        <div className="searchbar">
-          <input type="text" default="Ticker..."></input>
-          <div className="search-button"></div>
+      <div className="search flexbox-row">
+        <div className="exchange flexbox-column">{this.props.exchange}:</div>
+        <div className="ticker flexbox-column">{this.props.ticker}</div>
+        <div className="company-name flexbox-column">{this.props.name}</div>
+        <div className="search-bar flexbox-row">
+          <input type="text" placeholder="Ticker..."></input>
+          <div className="search-button">Search</div>
         </div>
       </div>
     )

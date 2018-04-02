@@ -32,13 +32,13 @@ class App extends React.Component {
       return <div>Loading...</div>;
     } else {
       return (
-        <div className="app">
+        <div className="app flexbox-column">
           <Title/>
           <Search name={this.state.company.stock.Name}
             ticker={this.state.company.stock.Symbol}
             exchange={this.state.company.stock.StockExchange}
           />
-          <div className="main">
+          <div className="main flexbox-row">
             <Stock stock={this.state.company.stock}/>
             <Sentiment tweets={this.state.company.tweets}
               scores={this.state.company.scores}

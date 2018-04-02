@@ -2,16 +2,16 @@ import React from 'react';
 
 var Stock = (props) => {
   return (
-    <div className="stock">
-      <div className="stock-price">
+    <div className="stock flexbox-column">
+      <div className="stock-price flexbox-row">
         <div className="stock-price-value">{props.stock.LastTradePrice}</div>
         <div className="stock-price-currency">USD</div>
-        <div className="stock-price-change">
-          <div className="stock-price-change-value">{props.stock.Change}</div>
-          <div className="stock-price-change-percent">({props.stock.ChangeInPercent}%)</div>
-        </div>
       </div>
-      <div className="stock-info-list">
+      <div className="stock-price-change flexbox-row">
+        <div className="stock-price-change-value">{props.stock.Change}</div>
+        <div className="stock-price-change-percent">({props.stock.ChangeInPercent}%)</div>
+      </div>
+      <div className="stock-info-list flexbox-column">
         <div className="stock-info-list-element">
           <div>Volume:</div>
           <div>{props.stock.Volume}</div>
