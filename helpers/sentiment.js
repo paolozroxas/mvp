@@ -25,7 +25,7 @@ module.exports.getSentimentScore = (snippet, dict) => {
     }
   }
 
-  //get scores as percentaget of unique words
+  //get scores as percentage of unique words
   positiveScore *= 100;
   negativeScore *= 100;
   positiveScore /= uniqueWordsCount;

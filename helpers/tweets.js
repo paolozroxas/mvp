@@ -1,24 +1,26 @@
 const axios = require('axios');
 const _ = require('underscore');
-const apiKeys = require('../twitter.config.js');
+const keys = require('../config.js');
 
 module.exports.getTweetsByKeyword = (keyword) => {
+  //get oath2 bearer token
   return axios({
     method: 'post',
     url: 'https://api.twitter.com/oauth2/token',
     headers: {
-      'Authorization': 'Basic ' + apiKeys.base64Key,
+      'Authorization': 'Basic ' + keys.twitter.base64Key,
       'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
     },
     data: 'grant_type=client_credentials'
   })
   .then(reply => {
+    //get tweets
     var token = reply.data.access_token;
     return axios({
       method: 'get',
       url: 'https://api.twitter.com/1.1/search/tweets.json',
       params: {
-        q: 'donald trump',
+        q: keyword,
         count: 100,
         tweet_mode: 'extended',
         result_type: 'popular'
@@ -29,6 +31,7 @@ module.exports.getTweetsByKeyword = (keyword) => {
     });
   })
   .then(reply => {
+    //extract pertinent information from tweets
     var tweets = reply.data.statuses;
     var tweetsOutput = [];
     var output = _.map(tweets, tweet => {
@@ -45,19 +48,12 @@ module.exports.getTweetsByKeyword = (keyword) => {
           screenName: tweet.user.screen_name,
           followersCount: tweet.user.followers_count,
           friendsCount: tweet.user.friends_count,
-        },
-
-        entities: {
-          hashtags: tweet.entities.hashtags,
-          userMentions: tweet.entities.user_mentions
         }
-
       };
     });
-
     return output;
   })
   .catch(err => console.error(err));
 
-}
+};
 

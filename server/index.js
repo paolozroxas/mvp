@@ -1,12 +1,48 @@
+const express = require('express');
+const app = express();
 const fs = require('fs');
+const morgan = require('morgan');
+const _ = require('underscore');
 
 var dict = JSON.parse(fs.readFileSync('data/sentiment_dict.json'));
-var sentiment = require('../helpers/sentiment.js');
-var positiveSample = fs.readFileSync('data/positive_sample.txt').toString();
-var negativeSample = fs.readFileSync('data/negative_sample.txt').toString();
+var sentimentHelper = require('../helpers/sentiment.js');
+var tweetsHelper = require('../helpers/tweets.js');
+var stocksHelper = require('../helpers/stocks.js');
 
-var result1 = sentiment.getSentimentScore(positiveSample, dict);
-var result2 = sentiment.getSentimentScore(negativeSample, dict);
 
-console.log('positive sample result', result1);
-console.log('negative sample result', result2);
+app.use(morgan('tiny'));
+
+app.get('/:ticker', (req, res) => {
+  var stock;
+  var tweets;
+  var scores;
+  var ticker = req.params.ticker;
+  if (ticker.length > 5) {
+    throw 'Invalid Ticker: Too long...';
+  }
+  stocksHelper.getStockByTicker(req.params.ticker)
+  .then(result => {
+    stock = result;
+    var name = stock.Name;
+    return tweetsHelper.getTweetsByKeyword(name);
+  })
+  .then(result => {
+    tweets = result;
+    scores = _.map(tweets, tweet => {
+      return sentimentHelper.getSentimentScore(tweet.text, dict);
+    });
+    var output = {
+      stock: stock,
+      tweets: tweets,
+      scores: scores
+    }
+    res.send(output);
+  })
+  .catch(err => {
+    console.error(err);
+    res.status(400).send(err);
+  })
+})
+
+var port = process.env.PORT || 3000;
+app.listen(port, () => console.log('Listening on port', port + '...'));
