@@ -16,7 +16,7 @@ class Search extends React.Component {
         <div className="company-name flexbox-column">{this.props.name}</div>
         <div className="search-bar flexbox-row">
           <input type="text" placeholder="Ticker..."></input>
-          <div className="search-button">Search</div>
+          <div className="search-button">Get Scores</div>
         </div>
       </div>
     )

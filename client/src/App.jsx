@@ -44,6 +44,10 @@ class App extends React.Component {
               scores={this.state.company.scores}
             />
           </div>
+          <div className="footer">
+            <p>McDonald, Bill, and Tim Loughran. “Finance Sentiment Word List from 10-Ks from 1994-2014.” University of Notre Dame, 2013.</p>
+            <p>Stock Data from Last10K API, Tweets from Twitter API</p>
+          </div>
         </div>
       );
     }

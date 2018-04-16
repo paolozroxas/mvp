@@ -37,6 +37,22 @@ var Stock = (props) => {
           <div>{props.stock.Ebitda}</div>
         </div>
       </div>
+      <div className="blurb-title blurb">
+        Sentiment Scores Information
+      </div>
+      <div className="blurb-content blurb">
+        <p>Positive scores indicate positive sentiment.</p>
+        <p>Negative scores indicate negative sentiment.</p>
+        <p>Scores are only meaningful as a relative measure.</p>
+        <p>
+          Content Score is generated from a Bag of Words algorithm
+          using the data of Professors Tim Loughran and Bill McDonald.
+        </p>
+        <p>
+          Influence Score is the Content Score weighted by Favorites
+          and Retweets.
+        </p>
+      </div>
     </div>
   );
 }
