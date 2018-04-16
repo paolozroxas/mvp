@@ -133,13 +133,16 @@ align-self: flex-end;
   padding: 5px;
 }
 
+.blurb {
+  color: darkgrey;
+  width: 210px;
+}
 .blurb-title {
   font-weight: bold;
   padding-top: 20px;
-  color: darkgrey;
 }
 .blurb-content {
-  color: darkgrey;
+
 }
 
 .sentiment {

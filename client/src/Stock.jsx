@@ -38,7 +38,7 @@ var Stock = (props) => {
         </div>
       </div>
       <div className="blurb-title blurb">
-        Sentiment Scores Information
+        <p>Sentiment Scores Information</p>
       </div>
       <div className="blurb-content blurb">
         <p>Positive scores indicate positive sentiment.</p>
