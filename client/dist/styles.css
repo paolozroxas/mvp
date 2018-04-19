@@ -2,6 +2,7 @@ html {
   height: 100%;
   width: 100%;
 }
+
 body {
   font-size: 12px;
   font-family: 'verdana', 'sans-serif';
@@ -11,9 +12,11 @@ body {
   padding: 0;
   margin: 0;
 }
+
 p {
   margin: 0;
 }
+
 #container {
   height: 100%;
   width: 100%;
@@ -25,6 +28,7 @@ p {
   justify-content: center;
   align-items: center;
 }
+
 .flexbox-column {
   display: flex;
   flex-direction: column;
@@ -46,10 +50,12 @@ p {
   background-color: black;
   color: white;
 }
+
 .app-name {
   font-size: 30px;
   padding: 10px;
 }
+
 .app-author {
   font-size: 16px;
   font-weight: lighter;
@@ -61,25 +67,30 @@ p {
   width: 100%;
   padding: 10px;
 }
+
 .exchange {
   font-size: 18px;
   justify-content: flex-end;
 }
+
 .ticker {
   font-size: 30px;
   font-weight: bold;
   justify-content: flex-end;
   padding-left: 10px;
 }
+
 .company-name {
   font-size: 18px;
   justify-content: flex-end;
   padding-left: 20px;
 }
+
 .search-bar {
 padding-left: 20px;
 align-self: flex-end;
 }
+
 .search-button {
   margin-left: 10px;
   padding: 2px;
@@ -88,11 +99,6 @@ align-self: flex-end;
   border-width: 2px;
   background-color: lightgrey;
   font-weight: bold;
-}
-.search-button:hover {
-  border: solid black;
-  border-width: 2px;
-  cursor: pointer;
 }
 
 .main {
@@ -106,24 +112,30 @@ align-self: flex-end;
   flex-grow: 1;
   height: 100%;
 }
+
 .stock-price-value {
   font-size: 40px;
 }
+
 .stock-price-currency {
   font-size: 18px;
   padding-left: 20px;
 }
+
 .stock-price-change {
   font-size: 18px;
   justify-content: flex-start;
 }
+
 .stock-price-change-percent {
   padding-left: 20px;
 }
+
 .stock-info-list {
   font-size: 16px;
   padding-top: 10px;
 }
+
 .stock-info-list-element {
   display: flex;
   flex-direction: row;
@@ -137,12 +149,10 @@ align-self: flex-end;
   color: darkgrey;
   width: 210px;
 }
+
 .blurb-title {
   font-weight: bold;
   padding-top: 20px;
-}
-.blurb-content {
-
 }
 
 .sentiment {
@@ -151,33 +161,41 @@ align-self: flex-end;
   padding: 0px;
   flex-grow: 2;
 }
+
 .scores {
   text-align: center;
   justify-content: space-around;
 }
+
 .score {
   width: 350px;
   height: 200px;
   justify-content: flex-end;
   background-size: cover;
 }
+
 .content-score {
   background-image: url('dial_ticks_purple.png');
 }
+
 .influence-score {
   background-image: url('dial_ticks_red.png');
 }
+
 .score-value {
   font-size: 65px;
   font-family: 'digital-7';
   color: #062f4f;
 }
+
 .score-label {
   font-size: 16px;
 }
+
 .content-score .score-label {
   color: #813773;
 }
+
 .influence-score .score-label {
   color: #b82601;
 }
@@ -189,10 +207,9 @@ align-self: flex-end;
   margin: 10px;
   overflow: scroll;
 }
+
 .tweet-screen-name {
   font-weight: bold;
-}
-.tweet {
 }
 
 .footer {

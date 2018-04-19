@@ -17,7 +17,7 @@ class App extends React.Component {
   }
 
   render() {
-    if (this.props.companyIsLoading) {
+    if (this.props.company === undefined || Object.keys(this.props.company).length === 0) {
       return <div>Loading...</div>;
     } else {
       return (
@@ -30,7 +30,7 @@ class App extends React.Component {
           </div>
           <div className="footer">
             <p>McDonald, Bill, and Tim Loughran. “Finance Sentiment Word List from 10-Ks from 1994-2014.” University of Notre Dame, 2013.</p>
-            <p>Stock Data from Last10K API, Tweets from Twitter API. Website by Paolo Z. Roxas</p>
+            <p>Stock Data from Last10K API, Tweets from Twitter API, Website by Paolo Z. Roxas.</p>
           </div>
         </div>
       );

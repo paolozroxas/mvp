@@ -1,19 +1,48 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { companyIsLoading } from '../actions/company.js';
+import companyGetData from '../actions/companyGetData.js';
 
-var Search = (props) => {
-  if (props.isLoading) {
-    return <div></div>;
-  } else {
+class Search extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchInput: ''
+    };
+  }
+
+  searchInputHandler(event) {
+    this.setState({
+      searchInput: event.target.value
+    });
+  }
+
+  searchSubmitHandler(event) {
+    this.props.changeCompanyIsLoading(true);
+    event.preventDefault();
+    this.props.companyGetData(this.state.searchInput);
+    this.setState({
+      searchInput: ''
+    });
+  }
+
+  render() {
     return (
       <div className="search flexbox-row">
-        <div className="exchange flexbox-column">{props.company.stock.StockExchange}:</div>
-        <div className="ticker flexbox-column">{props.company.stock.Symbol}</div>
-        <div className="company-name flexbox-column">{props.company.stock.Name}</div>
-        <div className="search-bar flexbox-row">
-          <input type="text" placeholder="Ticker..."></input>
-          <div className="search-button">Get Scores</div>
-        </div>
+        <div className="exchange flexbox-column">{this.props.exchange}:</div>
+        <div className="ticker flexbox-column">{this.props.ticker.toUpperCase()}</div>
+        <div className="company-name flexbox-column">{this.props.name}</div>
+        <form className="search-bar flexbox-row" onSubmit={this.searchSubmitHandler.bind(this)}>
+          <input
+            type="text"
+            placeholder="Ticker..."
+            value={this.state.searchInput}
+            onChange={this.searchInputHandler.bind(this)}/>
+          <input
+            type="submit"
+            className="search-button"
+            value={this.props.companyIsLoading ? "Loading..." : "Get Scores"}/>
+        </form>
       </div>
     );
   }
@@ -21,9 +50,18 @@ var Search = (props) => {
 
 var mapStateToProps = (state) => {
   return {
-    company: state.company,
+    name: state.company.stock.Name,
+    ticker: state.company.stock.Symbol,
+    exchange: state.company.stock.StockExchange,
     companyIsLoading: state.companyIsLoading
   };
 };
 
-export default connect(mapStateToProps, null)(Search);
+var mapDispatchToProps = (dispatch) => {
+  return {
+    companyGetData: (ticker) => dispatch(companyGetData(ticker)),
+    changeCompanyIsLoading: (bool) => dispatch(companyIsLoading(bool))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

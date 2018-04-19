@@ -20,10 +20,10 @@ var companyIsError = (state = false, action) => {
   }
 }
 
-var companyIsLoading = (state = true, action) => {
+var companyIsLoading = (state = false, action) => {
   switch (action.type) {
     case 'COMPANY_IS_LOADING':
-      return action.isLoading;
+      return action.companyIsLoading;
 
     default:
       return state;

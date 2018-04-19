@@ -8,14 +8,14 @@ var company = (company) => {
 var companyIsError = (isError) => {
   return {
     type: 'COMPANY_HAS_ERRORED',
-    isError: isError
+    companyIsError: isError
   };
 };
 
 var companyIsLoading = (isLoading) => {
   return {
     type: 'COMPANY_IS_LOADING',
-    isLoading: isLoading
+    companyIsLoading: isLoading
   };
 };
 

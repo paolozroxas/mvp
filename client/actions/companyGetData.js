@@ -15,6 +15,7 @@ var companyGetData = (ticker) => {
      .catch(err => {
        dispatch(companyIsLoading(false));
        dispatch(companyIsError(true));
+       console.error('ERROR:', err);
      });
    };
 };
