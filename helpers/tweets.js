@@ -8,7 +8,7 @@ module.exports.getTweetsByKeyword = (keyword) => {
     method: 'post',
     url: 'https://api.twitter.com/oauth2/token',
     headers: {
-      'Authorization': 'Basic ' + keys.twitter.base64Key,
+      'Authorization': 'Basic ' + (process.env.TWITTER_KEY || keys.twitter.base64Key),
       'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
     },
     data: 'grant_type=client_credentials'

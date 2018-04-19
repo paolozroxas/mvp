@@ -24,7 +24,7 @@ module.exports.getStockByTicker = (ticker) => {
     method: 'get',
     url: `https://services.last10k.com/v1/company/${ticker}/quote`,
     headers: {
-      'Ocp-Apim-Subscription-Key': keys.last10k.primaryKey
+      'Ocp-Apim-Subscription-Key': process.env.LAST10K_KEY || keys.last10k.primaryKey
     }
   })
   .then(result => {
