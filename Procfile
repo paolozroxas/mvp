@@ -1,2 +1,2 @@
-build: webpack
-web: node server/index.js
+"postinstall": "webpack -p"
+"web": "node server/index.js"
