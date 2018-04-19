@@ -1,7 +1,7 @@
 import { company, companyIsLoading, companyIsError } from './company.js';
 import axios from 'axios';
 
-var server = 'http://127.0.0.1:3000';
+var server = location.origin;
 
 var companyGetData = (ticker) => {
    return (dispatch) => {
